@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendance Test </title>
+  <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div>
+        <h1>Attendance</h1>
+        <p class="subtitle">Attendance for DBMS</p>
+      </div>
+      <div class="datetime">
+        <div class="date-info">
+          <i class="ri-calendar-2-line"></i>
+          <span id="date"></span> (<span id="day"></span>)
+        </div>
+        <div class="time-info">
+          <i class="ri-time-line"></i>
+          <span id="time"></span>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="faculty-info">
+        <div class="info-card">
+          <h3><i class="ri-user-3-line"></i> Faculty Details</h3>
+          <div class="info-grid">
+            <div>
+              <label>Name:</label>
+              <p>Prof. Ranjan Rai</p>
+            </div>
+            <div>
+              <label>Subject:</label>
+              <p>Database Management</p>
+            </div>
+            <div>
+              <label>Department:</label>
+              <p>Computer Science (Data Science)</p>
+            </div>
+            <div>
+              <label>Semester:</label>
+              <p>5th</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="attendance-section">
+        <div class="section-header">
+          <h2><i class="ri-list-check-2"></i> Student Attendance</h2>
+          <div class="stats">
+            <span class="total">Total: 8</span>
+            <span class="present-count">Present: 0</span>
+          </div>
+        </div>
+        
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Reg. No</th>
+                <th>Student Name</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="studentList"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <div class="action-bar">
+      <button class="btn primary" onclick="downloadExcel()">
+        <i class="ri-file-excel-2-line"></i> Export to Excel
+      </button>
+      <button class="btn secondary" onclick="showPresent()">
+        <i class="ri-list-check-3"></i> View Present Students
+      </button>
+    </div>
+    <!-- Add after action bar -->
+<div class="history-section">
+  <div class="section-header">
+    <h2><i class="ri-history-line"></i> Attendance History</h2>
+    <div class="controls">
+      <select id="dateSelector" class="date-select">
+        <option value="">Select Date</option>
+      </select>
+      <button class="btn tertiary" onclick="loadSelectedDate()">
+        <i class="ri-restart-line"></i> Load
+      </button>
+      <button class="btn secondary" onclick="downloadHistoryExcel()">
+        <i class="ri-download-line"></i> Download History
+      </button>
+    </div>
+  </div>
+</div>
+
+    <div class="present-list-modal" id="presentListBox">
+        <div class="modal-content">
+          <button class="close-btn" onclick="closeModal()">
+            <i class="ri-close-line"></i>
+          </button>
+          <h3><i class="ri-user-star-line"></i> Present Students</h3>
+          <ul id="presentList"></ul>
+        </div>
+      </div>
+
+      <footer class="footer">
+  <p>Made with ❤️ by Anish</p>
+</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

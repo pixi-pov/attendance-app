@@ -1,0 +1,580 @@
+:root {
+    --primary: #3B82F6;
+    --secondary: #6366F1;
+    --success: #10B981;
+    --surface: #FFFFFF;
+    --background: #F8FAFC;
+    --text-primary: #1E293B;
+    --text-secondary: #64748B;
+    --border: #E2E8F0;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 2rem;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--surface);
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  
+  .header {
+    padding: 1.5rem 2rem;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .header h1 {
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: -0.5px;
+  }
+  
+  .subtitle {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-top: 0.25rem;
+  }
+  
+  .datetime {
+    display: flex;
+    gap: 1.5rem;
+    font-weight: 500;
+  }
+  
+  .datetime i {
+    margin-right: 0.5rem;
+  }
+  
+  .content {
+    padding: 2rem;
+  }
+  
+  .faculty-info {
+    margin-bottom: 2rem;
+  }
+  
+  .info-card {
+    background: var(--surface);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+  }
+  
+  .info-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary);
+  }
+  
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .info-grid div {
+    padding: 0.5rem;
+  }
+  
+  .info-grid label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+  }
+  
+  .attendance-section {
+    margin-top: 2rem;
+  }
+  
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .section-header h2 {
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .stats {
+    display: flex;
+    gap: 1.5rem;
+    font-weight: 500;
+  }
+  
+  .stats .present-count {
+    color: var(--success);
+  }
+  
+  .table-container {
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    height: 355px; /* Shows 5 rows by default */
+    overflow-y: auto;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+  }
+  
+  thead {
+    position: sticky;
+    top: 0;
+    background: var(--background);
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  th, td {
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  th {
+    background: var(--background);
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  
+  tr {
+    height: 55px; /* Fixed row height */
+    border-bottom: 1px solid var(--border);
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  
+  tr:last-child {
+    border-bottom: none;
+  }
+  
+  tr:hover:not(.present) {
+    background: #f8fafc;
+  }
+  
+  tr.present {
+    background: #F0FDF4;
+  }
+  
+  .status-cell {
+    font-weight: 500;
+    color: var(--success);
+  }
+  
+  tr.present .status-cell::before {
+    content: "✓ ";
+  }
+  
+  /* Custom Scrollbar */
+  .table-container::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .table-container::-webkit-scrollbar-track {
+    background: var(--background);
+    border-radius: 4px;
+  }
+  
+  .table-container::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 4px;
+  }
+  
+  .table-container::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary);
+  }
+  
+  .action-bar {
+    padding: 1.5rem 2rem;
+    background: var(--background);
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+  }
+  
+  .btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .btn.primary {
+    background: var(--primary);
+    color: white;
+  }
+  
+  .btn.secondary {
+    background: var(--secondary);
+    color: white;
+  }
+  
+  .btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+  
+  .present-list-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .modal-content h3 {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--primary);
+    font-size: 1.4rem;
+  }
+  
+  .present-list-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .modal-content h3 {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--primary);
+    font-size: 1.4rem;
+  }
+  
+  #presentList {
+    list-style: none;
+    margin-bottom: 1.5rem;
+  }
+  
+  #presentList li {
+    padding: 1rem;
+    background: var(--background);
+    margin-bottom: 0.75rem;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: 1px solid var(--border);
+  }
+  
+  #presentList li:hover {
+    transform: translateX(5px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .student-badge {
+    background: var(--primary);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+  }
+  
+  .student-details {
+    flex-grow: 1;
+  }
+  
+  .student-name {
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+  
+  .student-reg {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+  
+  .presence-time {
+    font-size: 0.8rem;
+    color: var(--success);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+    font-size: 1.5rem;
+  }
+  
+  .close-btn:hover {
+    color: var(--primary);
+    transform: rotate(90deg);
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Registration Number Color Coding */
+  [data-reg^="22"] .student-badge { background: #3B82F6; } /* 2022 */
+  [data-reg^="21"] .student-badge { background: #10B981; } /* 2021 */
+  [data-reg^="20"] .student-badge { background: #6366F1; } /* 2020 */
+  .history-section {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+}
+
+.date-select {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-primary);
+}
+
+.tertiary {
+  background: var(--background);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  .datetime {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .content {
+    padding: 1.5rem;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .action-bar {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.5rem;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 600px;
+  }
+
+  .history-section .controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .date-select {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .datetime {
+    font-size: 0.9rem;
+  }
+
+  .info-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.2rem;
+  }
+
+  th, td {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .modal-content {
+    width: 95%;
+    padding: 1.5rem;
+  }
+
+  .present-list-modal li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .student-badge {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Additional Mobile Optimizations */
+@media (hover: none) and (pointer: coarse) {
+  tr {
+    min-height: 60px;
+  }
+
+  .btn {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}
+
+/* Prevent horizontal overflow */
+.container {
+  max-width: 100%;
+}
+
+table {
+  width: 100%;
+}
+.footer {
+  background: var(--background);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+}
+
+.footer p {
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 1rem;
+    font-size: 0.8rem;
+  }
+}
